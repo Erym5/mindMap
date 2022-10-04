@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mindmap.dao.mapper.MindMapInfoMapper">
+    <!--新增-->
+    <insert id="saveMap" parameterType="com.example.mindmap.dao.entity.MindMapInfo" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO map_info('map_id', 'title', 'data')
+        VALUES (#{map_id}, #{title}, #{data})
+    </insert>
+    <!-- 更新 -->
+    <update id="updateMapById" parameterType="com.example.mindmap.dao.entity.MindMapInfo">
+        update map_info
+        set map_id = #{map_id}, title = #{title}, data = #{data}
+        where map_id = #{map_id}
+    </update>
+<!--    获取-->
+    <select id="getMapById" resultType="com.example.mindmap.dao.entity.MindMapInfo">
+        select * from map_info where map_id=#{map_id}
+    </select>
+</mapper>

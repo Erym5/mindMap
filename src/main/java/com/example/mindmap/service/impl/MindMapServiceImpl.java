@@ -54,7 +54,7 @@ public class MindMapServiceImpl implements MindMapService {
             return RestResp.ok(mindMapInfo);
         } else {
             MindMapInfo mindMapInfo = mongoDao.getMapById(id);
-            System.out.println("数据库:" );
+            System.out.println("数据库:" + mindMapInfo);
             operations.set(key, mindMapInfo, 5, TimeUnit.HOURS);
             return RestResp.ok(mindMapInfo);
         }
@@ -66,8 +66,8 @@ public class MindMapServiceImpl implements MindMapService {
     }
 
     @Override
-    public RestResp<Void> deleteMapById(Integer id) {
-        mongoDao.deleteMapById(id);
+    public RestResp<Void> deleteMapById(String mapId) {
+        mongoDao.deleteMapById(mapId);
         return RestResp.ok();
     }
 }

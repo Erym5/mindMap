@@ -13,7 +13,7 @@ public class MindMapInfo implements Serializable
 {
 
     private static final long serialVersionUID = 1L;
-    public int id;
+//    public int id;
 
     public String mapId;
 
@@ -24,8 +24,8 @@ public class MindMapInfo implements Serializable
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("{");
-        sb.append("\"id\":")
-                .append(id);
+//        sb.append("\"id\":")
+//                .append(id);
         sb.append(",\"mapId\":\"")
                 .append(mapId).append('\"');
         sb.append(",\"title\":\"")

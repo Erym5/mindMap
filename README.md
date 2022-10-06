@@ -4,10 +4,10 @@ mindMap是基于Spring boot + Vue 开发的个人书籍管理平台，通过将�
 
 ## 项目地址
 
-- 后端项目 :
-- 前端项目 :
+- 后端项目 : [https://github.com/Erym5/mindMap](https://github.com/Erym5/mindMap)
+- 前端项目 : [https://github.com/Erym5/mindMap-front-web](https://github.com/Erym5/mindMap-front-web)
 
-## 项目体验: http://182.92.113.4:4000/swagger-ui/index.html#/
+## 项目体验: [http://182.92.113.4:4000/swagger-ui/index.html#/](http://182.92.113.4:4000/swagger-ui/index.html#/)
 ## 本地安装后地址: http://localhost/swagger-ui/index.html#/
 
 ## 开发环境
@@ -51,6 +51,6 @@ mindMap是基于Spring boot + Vue 开发的个人书籍管理平台，通过将�
         password: root
         
 4. 寻找图书搜索api接口。并在BookServiceImpl.java更改后运行
-    在此感谢[https://github.com/acdzh/douban-book-api](https://github.com/acdzh/douban-book-api)提供的学习接口
+    **感谢**[https://github.com/acdzh/douban-book-api](https://github.com/acdzh/douban-book-api)提供的学习接口
 
 5. mvn spring-boot:run

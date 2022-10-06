@@ -62,8 +62,8 @@ public class MindMapController {
 
     @DeleteMapping("/delete")
     @ApiOperation("删除导图的接口")
-    public RestResp<Void> deleteMapById(Integer id) {
+    public RestResp<Void> deleteMapById(String mapId) {
 //        System.out.println(Id);
-        return mindMapService.deleteMapById(id);
+        return mindMapService.deleteMapById(mapId);
     }
 }

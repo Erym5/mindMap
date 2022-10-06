@@ -19,5 +19,5 @@ public interface MindMapService {
 
     RestResp<List<MindMapInfo>> getMaps();
 
-    RestResp<Void> deleteMapById(Integer id);
+    RestResp<Void> deleteMapById(String mapId);
 }

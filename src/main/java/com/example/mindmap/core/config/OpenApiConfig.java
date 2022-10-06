@@ -1,4 +1,4 @@
-package com.example.mindmap;
+package com.example.mindmap.core.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,13 +19,13 @@ public class OpenApiConfig {
                         .title("MindMap项目在线接口文档")
                         //标题后面的版本号
                         .version("v1.0")
-                        .description("TienChin项目接口文档")
+                        .description("bookMap项目接口文档")
                         //联系人信息
-                        .contact(new Contact("javaboy", "123", "111@qq.com"))
-                        .build());
-//                .select()
+                        .contact(new Contact("H*J", "123", "111@qq.com"))
+                        .build())
+                .select()
                 //指定接口的位置
-//                .apis(RequestHandlerSelectors.basePackage("com.example.mindmap.controller"))
-//                .build();
+                .apis(RequestHandlerSelectors.basePackage("com.example.mindmap.controller"))
+                .build();
     }
 }

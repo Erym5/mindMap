@@ -1,9 +1,18 @@
 package com.example.mindmap.dao.entity;
 
 import lombok.Data;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.stereotype.Repository;
 
+import java.io.Serializable;
+
+@Repository
 @Data
-public class MindMapInfo {
+@Document(collection = "mapInfo")
+public class MindMapInfo implements Serializable
+{
+
+    private static final long serialVersionUID = 1L;
     public int id;
 
     public String mapId;

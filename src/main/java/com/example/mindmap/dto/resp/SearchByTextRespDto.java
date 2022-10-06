@@ -2,9 +2,16 @@ package com.example.mindmap.dto.resp;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
+import org.springframework.stereotype.Repository;
 
+import java.io.Serializable;
+
+@Repository
 @Data
-public class SearchByTextRespDto {
+public class SearchByTextRespDto implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     /**
      * ID
      */

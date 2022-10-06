@@ -1,79 +1,64 @@
-package com.example.mindmap.core.common;
+package com.example.mindmap.core.common.RestResp;
 
-public class RestResp {
-    private static final long serialVersionUID = 1L;
+import com.example.mindmap.core.common.constant.ErrorCodeEnum;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Getter;
 
-    private Integer code; // 状态码 0 表示成功，1表示处理中，-1表示失败
-    private Object data; // 数据
-    private String msg;// 描述
+@Getter
+public class RestResp<T> {
 
-    public RestResp() {
+    /**
+     * 响应码
+     */
+    @Schema(description = "错误码，00000-没有错误")
+    private String code;
+
+    /**
+     * 响应消息
+     */
+    @Schema(description = "响应消息")
+    private String message;
+
+    /**
+     * 响应数据
+     */
+    @Schema(description = "响应数据")
+    private T data;
+
+    private RestResp() {
+        this.code = ErrorCodeEnum.OK.getCode();
+        this.message = ErrorCodeEnum.OK.getMessage();
     }
 
-    public RestResp(Integer code, Object data, String msg) {
-        this.code = code;
-        this.data = data;
-        this.msg = msg;
+    private RestResp(ErrorCodeEnum errorCode) {
+        this.code = errorCode.getCode();
+        this.message = errorCode.getMessage();
     }
 
-    // 成功，传入数据
-    public static RestResp buildSuccess() {
-        return new RestResp(0, null, null);
-    }
-
-    // 成功，传入数据
-    public static RestResp buildSuccess(Object data) {
-        return new RestResp(0, data, null);
-    }
-
-    // 失败，传入描述信息
-    public static RestResp buildError(String msg) {
-        return new RestResp(-1, null, msg);
-    }
-
-    // 失败，传入描述信息,状态码
-    public static RestResp buildError(String msg, Integer code) {
-        return new RestResp(code, null, msg);
-    }
-
-    // 成功，传入数据,及描述信息
-    public static RestResp buildSuccess(Object data, String msg) {
-        return new RestResp(0, data, msg);
-    }
-
-    // 成功，传入数据,及状态码
-    public static RestResp buildSuccess(Object data, int code) {
-        return new RestResp(code, data, null);
-    }
-
-    public Integer getCode() {
-        return code;
-    }
-
-    public void setCode(Integer code) {
-        this.code = code;
-    }
-
-    public Object getData() {
-        return data;
-    }
-
-    public void setData(Object data) {
+    private RestResp(T data) {
+        this();
         this.data = data;
     }
 
-    public String getMsg() {
-        return msg;
+    /**
+     * 业务处理成功,无数据返回
+     */
+    public static RestResp<Void> ok() {
+        return new RestResp<>();
     }
 
-    public void setMsg(String msg) {
-        this.msg = msg;
+    /**
+     * 业务处理成功，有数据返回
+     */
+    public static <T> RestResp<T> ok(T data) {
+        return new RestResp<>(data);
     }
 
-    @Override
-    public String toString() {
-        return "JsonData [code=" + code + ", data=" + data + ", msg=" + msg
-                + "]";
+    /**
+     * 业务处理失败
+     */
+    public static RestResp<Void> fail(ErrorCodeEnum errorCode) {
+        return new RestResp<>(errorCode);
     }
 
 }

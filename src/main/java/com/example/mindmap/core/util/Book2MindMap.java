@@ -14,15 +14,20 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class BookToMindMap {
+public class Book2MindMap {
+
+    public static void util() {
+
+    }
     public static int kindOfBook(List<String> contents) {
-        int flag1 = 0;
+        //flag1 书籍格式 4:未知
+        int flag1 = 4;
         String flag = "某";
         List<String> signs = new ArrayList<>();
         List<String> seqs = new ArrayList<>();
         boolean symbol = true;
         boolean symbol1 = true;
-        Pattern bookmarkPattern = Pattern.compile(".?([\\d\\u4e00\\u4e8c\\u4e09\\u56db\\u4e94\\u516d\\u4e03\\u516b\\u4e5d\\u5341]{1,2})?(.)?");
+        Pattern bookmarkPattern = Pattern.compile(".*?([\\d\\u4e00\\u4e8c\\u4e09\\u56db\\u4e94\\u516d\\u4e03\\u516b\\u4e5d\\u5341]{1,2})(.)?");
         for (String content : contents) {
             Matcher matcher = bookmarkPattern.matcher(content);
             if (matcher.find()) {
@@ -35,14 +40,22 @@ public class BookToMindMap {
                     symbol = false;
                     continue;
                 }
+                //flag1 = 3: 有序号的小标题1.1
                 if (!symbol && seqs.get(seqs.size() - 2) != null && seq !=null && !sign.equals(flag) && symbol1) {
                     flag1 = 3;
                     symbol1 = false;
-                } else if (!symbol && seqs.get(seqs.size() - 2) != null && seq !=null && sign.equals(flag) && symbol1) {
+                }
+                //flag1 = 1 无小标题 1.
+                else if (!symbol && seqs.get(seqs.size() - 2) != null && seq !=null && sign.equals(flag) && symbol1) {
                     flag1 = 1;
                     symbol1 = false;
-                } else if (!symbol && seqs.get(seqs.size() - 2) != null && seq == null && symbol1) {
+                }
+//                flag1 = 2: 无序号的小标题
+                else if (!symbol && seqs.get(seqs.size() - 2) != null && seq == null && symbol1) {
                     flag1 = 2;
+                    symbol1 = false;
+                } else if (symbol) {
+                    flag1 = 0;
                     symbol1 = false;
                 }
             }
@@ -69,7 +82,7 @@ public class BookToMindMap {
         titleD.setText((String)returnMap.get("title"));
         boolean symbol = true;
         int flag1 = kindOfBook(contents);
-//        System.out.println(flag1);
+        System.out.println(flag1);
         String flag = "某";
 
         for (String content : contents) {
@@ -87,7 +100,7 @@ public class BookToMindMap {
                     symbol = false;
 //                    System.out.println(flag);
                 }
-                if (flag1 == 0) {
+                if (flag1 == 0 || flag1 == 4) {
                     catalogD.setText(matcher.group(0));
                     present.setData(catalogD);
                     firstTitle.add(present);

@@ -1,7 +1,14 @@
 package com.example.mindmap.dao.entity;
 
-public class Data
+import org.springframework.stereotype.Repository;
+
+import java.io.Serializable;
+
+@Repository
+public class Data implements Serializable
 {
+
+    private static final long serialVersionUID = 1L;
     private String text;
 
     public void setText(String text){

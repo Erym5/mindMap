@@ -29,6 +29,7 @@ public class MongoDao {
     public void updateMapById(MindMapInfo map) {
         Query query = new Query(Criteria.where("_mapId").is(map.getMapId()));
         Update update = new Update().set("title", map.getTitle()).set("content", map.getContent());
+        System.out.println(update);
 //        MongoTemplate.upsert(query, update, MindMapInfo.class);
     }
 
@@ -47,6 +48,7 @@ public class MongoDao {
     /*根据id删除导图*/
     public void deleteMapById(String mapId) {
         Query query = new Query(Criteria.where("mapId").is(mapId));
+        System.out.println(query + "mapId:" + mapId);
         mongoTemplate.remove(query, MindMapInfo.class);
     }
 }

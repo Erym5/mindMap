@@ -21,8 +21,8 @@ import static com.example.mindmap.core.util.Book2MindMap.createMap;
 public class MindMapServiceImpl implements MindMapService {
     @Autowired
     private MongoDao mongoDao;
-    @Autowired
-    private RedisTemplate redisTemplate;
+//    @Autowired
+//    private RedisTemplate redisTemplate;
 
     @Override
     public RestResp<BookInfoRespDto> createMindMap(Integer id) {
@@ -43,21 +43,22 @@ public class MindMapServiceImpl implements MindMapService {
     }
     @Override
     public RestResp<MindMapInfo> queryMapById(String id) {
-        String key = "map_" + id;
-        ValueOperations<String, MindMapInfo> operations = redisTemplate.opsForValue();
+//        String key = "map_" + id;
+//        ValueOperations<String, MindMapInfo> operations = redisTemplate.opsForValue();
 
         //判断数据是否在缓存中
-        boolean hasKey = redisTemplate.hasKey(key);
-        if (hasKey) {
-            MindMapInfo mindMapInfo = operations.get(key);
-            System.out.println("缓存:" );
-            return RestResp.ok(mindMapInfo);
-        } else {
-            MindMapInfo mindMapInfo = mongoDao.getMapById(id);
-            System.out.println("数据库:" + mindMapInfo);
-            operations.set(key, mindMapInfo, 5, TimeUnit.HOURS);
-            return RestResp.ok(mindMapInfo);
-        }
+//        boolean hasKey = redisTemplate.hasKey(key);
+//        if (hasKey) {
+//            MindMapInfo mindMapInfo = operations.get(key);
+//            System.out.println("缓存:" );
+//            return RestResp.ok(mindMapInfo);
+//        }
+//        else {
+        MindMapInfo mindMapInfo = mongoDao.getMapById(id);
+        System.out.println("数据库:" + mindMapInfo);
+//        operations.set(key, mindMapInfo, 5, TimeUnit.HOURS);
+        return RestResp.ok(mindMapInfo);
+//        }
     }
 
     @Override

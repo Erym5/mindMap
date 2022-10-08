@@ -5,9 +5,11 @@ spring:
   # MongoDB
   data:
     mongodb:
-      uri: mongodb://localhost:27017/map
+      uri: mongodb://182.92.113.4:27017/map
+      password: 1314520
+#      username: map
 
-#  datasource:
+  #  datasource:
 #    url: jdbc:mysql://localhost:3306/map?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
 #    username: root
 #    password: root
@@ -22,8 +24,8 @@ spring:
   redis:
     database: 0
     port: 6379
-    host: localhost
-    password:
+    host: 182.92.113.4
+    password: 1314520
     lettuce:
       shutdown-timeout: 1000
       pool:
@@ -45,5 +47,5 @@ mindMap:
   cors:
     # 允许跨域的域名
     allow-origins:
-      - http://localhost:1024
-      - http://localhost:8080
+      - http://182.92.113.4:1024
+      - http://182.92.113.4:8080

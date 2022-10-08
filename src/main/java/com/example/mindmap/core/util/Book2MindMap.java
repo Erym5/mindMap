@@ -23,8 +23,8 @@ public class Book2MindMap {
     }
     public static int kindOfBook(List<String> contents) {
 
-        //flag1 书籍格式 4:未知
-        int flag1 = 4;
+        //flagOfBook 书籍格式 4:未知
+        int flagOfBook = 4;
 //        String flag = "某";
         List<String> signs = new ArrayList<>();
         List<String> seqs = new ArrayList<>();
@@ -44,27 +44,27 @@ public class Book2MindMap {
                     symbol = false;
                     continue;
                 }
-                //flag1 = 3: 有序号的小标题1.1
+                //flagOfBook = 3: 有序号的小标题1.1
                 if (!symbol && seqs.get(seqs.size() - 2) != null && seq !=null && !sign.equals(flag) && symbol1) {
-                    flag1 = 3;
+                    flagOfBook = 3;
                     symbol1 = false;
                 }
-                //flag1 = 1 无小标题 1.
+                //flagOfBook = 1 无小标题 1.
                 else if (!symbol && seqs.get(seqs.size() - 2) != null && seq !=null && sign.equals(flag) && symbol1) {
-                    flag1 = 1;
+                    flagOfBook = 1;
                     symbol1 = false;
                 }
-//                flag1 = 2: 无序号的小标题
+//                flagOfBook = 2: 无序号的小标题
                 else if (!symbol && seqs.get(seqs.size() - 2) != null && seq == null && symbol1) {
-                    flag1 = 2;
+                    flagOfBook = 2;
                     symbol1 = false;
                 } else if (symbol) {
-                    flag1 = 0;
+                    flagOfBook = 0;
                     symbol1 = false;
                 }
             }
         }
-        return flag1;
+        return flagOfBook;
     }
 
 
@@ -85,8 +85,8 @@ public class Book2MindMap {
         Data titleD = new Data();
         titleD.setText((String)returnMap.get("title"));
 //        boolean symbol = true;
-        int flag1 = kindOfBook(contents);
-//        System.out.println(flag1);
+        int flagOfBook = kindOfBook(contents);
+//        System.out.println(flagOfBook);
 //        String flag = "某";
 
 //        for (Iterator<String> it = contents.iterator(); it.hasNext();) {
@@ -126,15 +126,15 @@ public class Book2MindMap {
 //                    symbol = false;
 //                    System.out.println(flag);
 //                }
-            if (flag1 == 0 || flag1 == 4) {
+            if (flagOfBook == 0 || flagOfBook == 4) {
                 catalogD.setText(content);
                 present.setData(catalogD);
                 firstTitle.add(present);
-            } else if (flag1 == 1) {
+            } else if (flagOfBook == 1) {
                 catalogD.setText(content);
                 present.setData(catalogD);
                 firstTitle.add(present);
-            } else if (flag1 == 2) {
+            } else if (flagOfBook == 2) {
                 int mark = 0;
                 if (seq != null) {
                     mark = 1;

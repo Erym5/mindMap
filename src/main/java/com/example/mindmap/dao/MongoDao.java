@@ -1,6 +1,7 @@
 package com.example.mindmap.dao;
 
 import com.example.mindmap.dao.entity.MindMapInfo;
+import com.mongodb.client.result.UpdateResult;
 import com.sun.org.apache.xalan.internal.xsltc.compiler.Template;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.jms.JmsProperties;
@@ -27,9 +28,10 @@ public class MongoDao {
 
     /*更新导图*/
     public void updateMapById(MindMapInfo map) {
-        Query query = new Query(Criteria.where("_mapId").is(map.getMapId()));
+        Query query = new Query(Criteria.where("mapId").is(map.getMapId()));
         Update update = new Update().set("title", map.getTitle()).set("content", map.getContent());
-        System.out.println(update);
+        mongoTemplate.updateFirst(query,update,MindMapInfo.class);
+//        System.out.println(update);
 //        MongoTemplate.upsert(query, update, MindMapInfo.class);
     }
 

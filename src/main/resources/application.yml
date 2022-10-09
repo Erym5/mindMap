@@ -5,8 +5,8 @@ spring:
   # MongoDB
   data:
     mongodb:
-      uri: mongodb://182.92.113.4:27017/map
-      password: 1314520
+      uri: mongodb://localhost/map
+
 #      username: map
 
   #  datasource:
@@ -24,8 +24,8 @@ spring:
   redis:
     database: 0
     port: 6379
-    host: 182.92.113.4
-    password: 1314520
+    host: localhost
+    password:
     lettuce:
       shutdown-timeout: 1000
       pool:

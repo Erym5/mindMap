@@ -5,8 +5,13 @@ spring:
   # MongoDB
   data:
     mongodb:
-      uri: mongodb://localhost/map
-
+      uri: mongodb://localhost:27017/map
+      password: 1314520
+  #rabbitmq配置
+  rabbitmq:
+    username: guest
+    password: guest
+    addresses: localhost:5672
 #      username: map
 
   #  datasource:
@@ -25,7 +30,7 @@ spring:
     database: 0
     port: 6379
     host: localhost
-    password:
+    password: 1314520
     lettuce:
       shutdown-timeout: 1000
       pool:
@@ -47,5 +52,7 @@ mindMap:
   cors:
     # 允许跨域的域名
     allow-origins:
-      - http://182.92.113.4:1024
-      - http://182.92.113.4:8080
+      - http://localhost:1024
+      - http://localhost:8080
+
+swagger_is_enable: true

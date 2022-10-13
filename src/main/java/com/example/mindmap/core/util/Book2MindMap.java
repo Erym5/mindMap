@@ -78,7 +78,7 @@ public class Book2MindMap {
 
         Pattern bookmarkPattern = Pattern.compile(".*?([\\d\\u4e00\\u4e8c\\u4e09\\u56db\\u4e94\\u516d\\u4e03\\u516b\\u4e5d\\u5341]{1,2})(.)?\\s*(.*)?\\s?");
         RestTemplate restTemplate = new RestTemplate();
-        String url = "http://localhost:3000/book?id=" + id;
+        String url = "http://localhost/book?id=" + id;
         ResponseEntity<Map> responseEntity = restTemplate.exchange(url, HttpMethod.GET, null, Map.class);
         Map<String, Object> returnMap = (Map<String, Object>) responseEntity.getBody().get("data");
         List<String> contents = (List<String>) returnMap.get("catalog");

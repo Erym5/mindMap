@@ -2,6 +2,7 @@ package com.example.mindmap.service;
 
 import com.example.mindmap.core.common.RestResp.RestResp;
 import com.example.mindmap.dao.entity.MindMapInfo;
+import com.example.mindmap.dao.entity.rabbitList;
 import com.example.mindmap.dto.resp.BookInfoRespDto;
 
 import javax.validation.constraints.Min;
@@ -20,4 +21,6 @@ public interface MindMapService {
     RestResp<List<MindMapInfo>> getMaps();
 
     RestResp<Void> deleteMapById(String mapId);
+
+    RestResp<Void> deleteMapByChioces(List<String> mapIds);
 }

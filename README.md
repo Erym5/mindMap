@@ -7,7 +7,6 @@ mindMap是基于Spring boot + Vue 开发的个人书籍管理平台，通过将�
 - 后端项目 : [https://github.com/Erym5/mindMap](https://github.com/Erym5/mindMap)
 - 前端项目 : [https://github.com/Erym5/mindMap-front-web](https://github.com/Erym5/mindMap-front-web)
 
-## 项目体验: [http://182.92.113.4:4000/swagger-ui/index.html#/](http://182.92.113.4:4000/swagger-ui/index.html#/)
 ## 本地安装后地址: http://localhost/swagger-ui/index.html#/
 
 ## 开发环境
@@ -16,6 +15,8 @@ mindMap是基于Spring boot + Vue 开发的个人书籍管理平台，通过将�
 - Redis 3.0.504
 - JDK 8
 - Maven 3.3
+- ElasticSearch 6.2.0
+- RabbitMQ 3.8.12
 
 ## 后端技术选型
 

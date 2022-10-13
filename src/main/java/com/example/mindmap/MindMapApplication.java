@@ -10,8 +10,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
 //@MapperScan("com.example.mindmap.dao.mapper")
-@EnableSwagger2
-@EnableOpenApi
 @SuppressWarnings("unchecked")
 public class MindMapApplication {
 

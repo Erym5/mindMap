@@ -50,7 +50,7 @@ public class MongoDao {
     /*根据id删除导图*/
     public void deleteMapById(String mapId) {
         Query query = new Query(Criteria.where("mapId").is(mapId));
-        System.out.println(query + "mapId:" + mapId);
+//        System.out.println(query + "mapId:" + mapId);
         mongoTemplate.remove(query, MindMapInfo.class);
     }
 }

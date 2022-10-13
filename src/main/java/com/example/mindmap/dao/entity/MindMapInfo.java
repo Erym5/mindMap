@@ -26,7 +26,7 @@ public class MindMapInfo implements Serializable
         final StringBuilder sb = new StringBuilder("{");
 //        sb.append("\"id\":")
 //                .append(id);
-        sb.append(",\"mapId\":\"")
+        sb.append("mapId\":\"")
                 .append(mapId).append('\"');
         sb.append(",\"title\":\"")
                 .append(title).append('\"');
@@ -34,5 +34,12 @@ public class MindMapInfo implements Serializable
                 .append(content).append('\"');
         sb.append('}');
         return sb.toString();
+    }
+    public ESMindMapInfo toESMindMapInfo() {
+        ESMindMapInfo esMindMapInfo = new ESMindMapInfo();
+        esMindMapInfo.setMapId(this.getMapId());
+        esMindMapInfo.setTitle(this.getTitle());
+        esMindMapInfo.setContent(this.getContent());
+        return esMindMapInfo;
     }
 }

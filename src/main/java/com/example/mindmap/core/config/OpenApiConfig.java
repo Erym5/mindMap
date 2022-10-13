@@ -1,5 +1,6 @@
 package com.example.mindmap.core.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -10,9 +11,13 @@ import springfox.documentation.spring.web.plugins.Docket;
 
 @Configuration
 public class OpenApiConfig {
+
+    @Value("${swagger_is_enable}")
+    private boolean swagger_is_enable;
     @Bean
     Docket docket() {
         return new Docket(DocumentationType.OAS_30)
+                .enable(swagger_is_enable)
                 //配置网站的基本信息
                 .apiInfo(new ApiInfoBuilder()
                         //网站标题

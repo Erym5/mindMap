@@ -21,6 +21,11 @@ public class ApiRouterConsts {
     public static final String MIND_MAP_URL_PREFIX = API_URL_PREFIX + "/mind_map";
 
     /**
+     * es搜索前缀
+     */
+    public static final String ES_URL_PREFIX = API_URL_PREFIX + "/es";
+
+    /**
      * 资源（图片）模块请求路径前缀
      */
     public static final String RESOURCE_URL_PREFIX = "/image";

@@ -1,7 +1,10 @@
 package com.example.mindmap.controller;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.example.mindmap.core.common.RestResp.RestResp;
 import com.example.mindmap.dao.entity.MindMapInfo;
+import com.example.mindmap.dao.entity.rabbitList;
 import com.example.mindmap.dto.resp.BookInfoRespDto;
 import com.example.mindmap.service.MindMapService;
 import io.swagger.annotations.Api;
@@ -11,6 +14,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -65,5 +69,14 @@ public class MindMapController {
     public RestResp<Void> deleteMapById(String mapId) {
 //        System.out.println(Id);
         return mindMapService.deleteMapById(mapId);
+    }
+
+    @PostMapping("/deletebychoices")
+    @ApiOperation("删除选定导图的接口")
+    public RestResp<Void> deleteMapByChioces(@RequestBody String idsOfMap) {
+        List<String> mapIds = JSONObject.parseArray(idsOfMap, String.class);
+        System.out.println(mapIds);
+//        return RestResp.ok();
+        return mindMapService.deleteMapByChioces(mapIds);
     }
 }

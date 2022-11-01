@@ -39,10 +39,6 @@ public class ESMindMapServiceImpl implements ESMindMapService {
         assert esMindMapInfo != null;
         BeanUtils.copyProperties(mindMapInfo, esMindMapInfo);
 
-//        System.out.println(esMindMapInfo);
-//        System.out.println(mindMapInfo);
-//        System.out.println();
-
         esBookRepository.saveAll(esMindMapInfo);
         return RestResp.ok();
     }
@@ -57,7 +53,6 @@ public class ESMindMapServiceImpl implements ESMindMapService {
     @Override
     public RestResp<Iterable> getAll() {
         Iterable<ESMindMapInfo> items = esBookRepository.findAll();
-        items.forEach(item -> System.out.println( item ));
         return RestResp.ok(items);
     }
 

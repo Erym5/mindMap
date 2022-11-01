@@ -16,6 +16,11 @@ public class ApiRouterConsts {
     public static final String BOOK_URL_PREFIX = API_URL_PREFIX + "/book";
 
     /**
+     * 用户管理模块请求路径前缀
+     */
+    public static final String USER_URL_PREFIX = API_URL_PREFIX + "/user";
+
+    /**
      * 脑图管理模块请求路径前缀
      */
     public static final String MIND_MAP_URL_PREFIX = API_URL_PREFIX + "/mind_map";

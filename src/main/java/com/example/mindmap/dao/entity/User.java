@@ -1,5 +1,6 @@
 package com.example.mindmap.dao.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import org.springframework.stereotype.Repository;
 
@@ -7,6 +8,7 @@ import java.io.Serializable;
 
 @Data
 @Repository
+@TableName("user_info")
 public class User implements Serializable {
 
     /**
@@ -23,5 +25,10 @@ public class User implements Serializable {
     密码
     */
     private String pwd;
+
+//    /**
+//    角色
+//    */
+//    private String role;
 
 }

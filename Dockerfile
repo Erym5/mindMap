@@ -2,7 +2,7 @@
 # Author: Dhj
 FROM openjdk:8-jre
 
-WORKDIR /data/minmap
+WORKDIR /data/mindmap
 
 COPY . .
 

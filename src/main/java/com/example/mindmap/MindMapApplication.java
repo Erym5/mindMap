@@ -8,9 +8,9 @@ import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 import springfox.documentation.oas.annotations.EnableOpenApi;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
-//@MapperScan("com.example.mindmap.dao.mapper")
-@SuppressWarnings("unchecked")
+@SpringBootApplication
+@MapperScan("com.example.mindmap.dao.mapper")
+//@SuppressWarnings("unchecked")
 public class MindMapApplication {
 
     public static void main(String[] args) {

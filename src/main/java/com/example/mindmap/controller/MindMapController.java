@@ -40,15 +40,12 @@ public class MindMapController {
     @PostMapping("/save")
     @ApiOperation("保存导图的接口")
     public RestResp<Void> mindMapSave(@RequestBody Map<String, Object> map) {
-        System.out.println(map);
         return mindMapService.keepMap(map);
-//        System.out.println(map.map_id);
     }
 
     @PostMapping("/update")
     @ApiOperation("更新导图的接口")
     public RestResp<Void> updateMap(@RequestBody Map<String, Object> map) {
-        System.out.println(map);
         return mindMapService.newMapById(map);
     }
 
@@ -67,7 +64,6 @@ public class MindMapController {
     @DeleteMapping("/delete")
     @ApiOperation("删除导图的接口")
     public RestResp<Void> deleteMapById(String mapId) {
-//        System.out.println(Id);
         return mindMapService.deleteMapById(mapId);
     }
 
@@ -75,8 +71,6 @@ public class MindMapController {
     @ApiOperation("删除选定导图的接口")
     public RestResp<Void> deleteMapByChioces(@RequestBody String idsOfMap) {
         List<String> mapIds = JSONObject.parseArray(idsOfMap, String.class);
-        System.out.println(mapIds);
-//        return RestResp.ok();
         return mindMapService.deleteMapByChioces(mapIds);
     }
 }

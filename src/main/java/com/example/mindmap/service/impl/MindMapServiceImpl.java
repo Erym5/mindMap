@@ -54,10 +54,7 @@ public class MindMapServiceImpl implements MindMapService {
     @Override
     public RestResp<MindMapInfo> queryMapById(String id) {
         MindMapInfo mindMapInfo = mongoDao.getMapById(id);
-        System.out.println("数据库:" + mindMapInfo);
-//        operations.set(key, mindMapInfo, 5, TimeUnit.HOURS);
         return RestResp.ok(mindMapInfo);
-//        }
     }
 
     @Override

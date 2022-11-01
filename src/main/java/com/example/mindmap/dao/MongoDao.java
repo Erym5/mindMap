@@ -31,14 +31,11 @@ public class MongoDao {
         Query query = new Query(Criteria.where("mapId").is(map.getMapId()));
         Update update = new Update().set("title", map.getTitle()).set("content", map.getContent());
         mongoTemplate.updateFirst(query,update,MindMapInfo.class);
-//        System.out.println(update);
-//        MongoTemplate.upsert(query, update, MindMapInfo.class);
     }
 
     /*根据mapId查询导图*/
     public MindMapInfo getMapById(String id){
         Query query = new Query(Criteria.where("mapId").is(id));
-        System.out.println(mongoTemplate.findOne(query, MindMapInfo.class));
         return mongoTemplate.findOne(query, MindMapInfo.class);
     }
 
@@ -50,7 +47,6 @@ public class MongoDao {
     /*根据id删除导图*/
     public void deleteMapById(String mapId) {
         Query query = new Query(Criteria.where("mapId").is(mapId));
-//        System.out.println(query + "mapId:" + mapId);
         mongoTemplate.remove(query, MindMapInfo.class);
     }
 }

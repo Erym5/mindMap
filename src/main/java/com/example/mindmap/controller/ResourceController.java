@@ -27,16 +27,12 @@ public class ResourceController {
     @ApiOperation("上传图片的的接口")
     @ResponseBody
     public RestResp<String> uploadImg(MultipartFile file) {
-        System.out.println(file);
         return resourceService.uploadImg(file);
-//        System.out.println(map.map_id);
     }
 
     @GetMapping()
     @ApiOperation("获取图片的的接口")
     public RestResp<Void> getImg(@RequestParam(name = "fileName") String fileName, HttpServletResponse response) {
-        System.out.println(fileName);
         return resourceService.getImg(fileName, response);
     }
-//        System.out.println(map.map_id);
 }

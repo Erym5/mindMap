@@ -15,7 +15,7 @@ import java.util.UUID;
 public class ResourceServiceImpl implements ResourceService {
     @Override
     public RestResp<String> uploadImg(MultipartFile file) {
-        File f = new File("F:/upload");
+        File f = new File("/www/upload/");
         if (!f.exists() || !f.isDirectory()){
             f.mkdir();
         }
@@ -24,7 +24,7 @@ public class ResourceServiceImpl implements ResourceService {
         String fileExt= file.getOriginalFilename().substring(doPos + 1).toLowerCase();//获取扩
         String fileName = UUID.randomUUID().toString().replaceAll("-","") + "." + fileExt;
         try {
-            Files.copy(file.getInputStream(),new File("F:/upload/" + fileName).toPath());
+            Files.copy(file.getInputStream(),new File("/www/upload/" + fileName).toPath());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -34,7 +34,7 @@ public class ResourceServiceImpl implements ResourceService {
     @Override
     public RestResp<Void> getImg(String fileName, HttpServletResponse response) {
         try {
-            Files.copy(Paths.get("F:\\upload\\" + fileName),response.getOutputStream());
+            Files.copy(Paths.get("/www/upload/" + fileName),response.getOutputStream());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

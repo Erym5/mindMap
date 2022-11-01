@@ -25,7 +25,6 @@ public class Book2MindMap {
 
         //flagOfBook 书籍格式 4:未知
         int flagOfBook = 4;
-//        String flag = "某";
         List<String> signs = new ArrayList<>();
         List<String> seqs = new ArrayList<>();
         boolean symbol = true;
@@ -40,7 +39,6 @@ public class Book2MindMap {
                 seqs.add(seq);
                 if (seq != null && symbol) {
                     flag = sign;
-//                    System.out.println(flag);
                     symbol = false;
                     continue;
                 }
@@ -78,36 +76,24 @@ public class Book2MindMap {
 
         Pattern bookmarkPattern = Pattern.compile(".*?([\\d\\u4e00\\u4e8c\\u4e09\\u56db\\u4e94\\u516d\\u4e03\\u516b\\u4e5d\\u5341]{1,2})(.)?\\s*(.*)?\\s?");
         RestTemplate restTemplate = new RestTemplate();
-        String url = "http://localhost/book?id=" + id;
+        String url = "http://localhost:3000/book?id=" + id;
         ResponseEntity<Map> responseEntity = restTemplate.exchange(url, HttpMethod.GET, null, Map.class);
         Map<String, Object> returnMap = (Map<String, Object>) responseEntity.getBody().get("data");
         List<String> contents = (List<String>) returnMap.get("catalog");
         Data titleD = new Data();
         titleD.setText((String)returnMap.get("title"));
-//        boolean symbol = true;
         int flagOfBook = kindOfBook(contents);
-//        System.out.println(flagOfBook);
-//        String flag = "某";
-
-//        for (Iterator<String> it = contents.iterator(); it.hasNext();) {
-//            String content = it.next();
-//            if (content.matches("\\d.\\d.\\d.*")) {
-//                it.remove();
-//            }
-//            else {continue;}
-//        }
 
         for (Iterator<String> it = contents.iterator(); it.hasNext();) {
             String content = it.next();
+            System.out.println(content);
             if (content.matches("\\d+.\\d+.\\d+.*")) {
                 it.remove();
                 continue;
             } else if (content.matches("(.*?)\\s\\d+")) {
                 String[] str = content.split("\\s\\d");
                 content = str[0];
-                System.out.println(content);
             }
-//            System.out.println(content);
             Data catalogD = new Data();
             Children present = new Children();
             Matcher matcher = bookmarkPattern.matcher(content);
@@ -116,16 +102,9 @@ public class Book2MindMap {
             if (matcher.find()) {
                 seq = matcher.group(1);
                 sign = matcher.group(2);
-                System.out.println(seq);
             }
             seqs.add(seq);
 
-//                if (seq != null && symbol) {
-//                    System.out.println(content);
-//                    flag = sign;
-//                    symbol = false;
-//                    System.out.println(flag);
-//                }
             if (flagOfBook == 0 || flagOfBook == 4) {
                 catalogD.setText(content);
                 present.setData(catalogD);
@@ -161,14 +140,10 @@ public class Book2MindMap {
                 //list追寻上一个
             else {
                 int mark = 0;
-                System.out.println(flag + "--sign:" + sign);
-//                    System.out.println(!sign.equals(flag));
                 if (seq != null && !sign.equals(flag)) {
-//                    System.out.println(content);
                     catalogD.setText(content);
                     present.setData(catalogD);
                     secondTitle.add(present);
-//                    System.out.println(secondTitle);
                 } else if (seq != null && sign.equals(flag)) {
                     catalogD.setText(content);
                     present.setData(catalogD);
@@ -176,8 +151,6 @@ public class Book2MindMap {
                     if (firstTitle.size() > 1) {
                         firstTitle.get(firstTitle.size() - 2).setChildren(secondTitle);
                     }
-
-
                     secondTitle = new ArrayList<Children>();
 
                 }else {
@@ -185,12 +158,15 @@ public class Book2MindMap {
                     present.setData(catalogD);
                     firstTitle.add(present);
                     if (secondTitle != null && firstTitle.size() > 1) {
-//                        System.out.println("---------------------------------------------------------------");
                         firstTitle.get(firstTitle.size() - 2).setChildren(secondTitle);
                         secondTitle = new ArrayList<Children>();
                     }
                 }
             }
+        }
+        if (secondTitle != null && firstTitle.size() > 1) {
+            firstTitle.get(firstTitle.size() - 1).setChildren(secondTitle);
+            secondTitle = new ArrayList<Children>();
         }
         root.setData(titleD);
         root.setChildren(firstTitle);

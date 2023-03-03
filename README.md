@@ -1,6 +1,6 @@
 ## 项目简介
 
-mindMap是基于Spring boot + Vue 开发的个人书籍管理平台，通过将书籍目录脑图化并DIY后续内容，使其由文字形式转化为图片形式，可被更多感知细胞感知，从而达到加深理解记忆效果。包括搜索书籍，书籍转脑图，脑图存储，脑图编辑等功能。仅作学习使用
+MindMap是基于Spring boot + Vue 开发的个人书籍管理平台，通过将书籍目录脑图化并DIY后续内容，使其由文字形式转化为图片形式，可被更多感知细胞感知，从而达到加深理解记忆效果。包括搜索书籍，书籍转脑图，脑图存储，脑图编辑等功能。仅作学习使用
 
 ## 项目地址
 
@@ -34,7 +34,7 @@ mindMap是基于Spring boot + Vue 开发的个人书籍管理平台，通过将�
 - Vuex
 
 ## 截图
-
+bookshlef<br>![img.jpeg](bookshelf.jpeg)edit<br>![img_1.png](edit.jpeg)home<br>![img.png](home.jpeg)search<br>![img_1.png](search.jpeg)
 
 ## 安装步骤
 
